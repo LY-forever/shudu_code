@@ -248,11 +248,25 @@ int main()
 		cout << "ÊäÈë´íÎó£¡" << endl;
 	}
 
+	ofstream outfile;
+	outfile.open("sudoku.txt");
 	for (i = 0; i < n; i++)
 	{
+		
 		shengcheng(shudu);
-		print(shudu);
+		int m = 0;
+		int n = 0;
+		for (m = 0; m < 9; m++) {
+			for (n = 0; n < 9; n++) {
+				outfile << shudu[m][n] << ' ';
+			}
+			outfile << endl;
+		}
+		outfile << endl;
+		
 	}
+	outfile.close();
+
 	system("pause");
 	return 0;
 }
