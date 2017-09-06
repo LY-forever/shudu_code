@@ -119,7 +119,10 @@ void change9(int s[9][9])   //随机交换两个数字的所有位置
 	int j;
 	srand((unsigned)time(0));
 	x = rand() % 9;
-	y = (x + 2) % 9;
+	if (x == 0) x = 1;
+	y = (x + s[3][3]) % 9;
+	if (y == 0) y = 1;
+
 	for (i = 0; i < 9; i++)
 	{
 		for (j = 0; j < 9; j++)
@@ -139,7 +142,91 @@ void change9(int s[9][9])   //随机交换两个数字的所有位置
 		}
 	}
 };
+void first_num(int s[9][9])   //显示首个为2 学号19 （1+9）% 9 + 1 = 2
+{
+	int x=2;
+	int y=s[0][0];
+	int i;
+	int j;
+	for (i = 0; i < 9; i++)
+	{
+		for (j = 0; j < 9; j++)
+		{
+			if (s[i][j] == x)
+			{
+				s[i][j] = y;
+				continue;
+			}
 
+			if (s[i][j] == y)
+			{
+				s[i][j] = x;
+				continue;
+			}
+			else continue;
+		}
+	}
+};
+void shengcheng(int s[9][9])   //生成一个数独
+{
+	int i = 0;
+	int m[9];
+	change9(s);               //随机交换两个数字，增大随机性
+	for (i = 0; i < 9; i++)   //记录第一行数字
+	{
+		m[i] = s[0][i];
+	}
+	for (i = 0;i < 9; i++)   //根据第一行数字进行变化
+	{
+		if (m[i] == 1)
+		{
+			change1(s);
+			continue;
+		}
+		if (m[i] == 2)
+		{
+			change2(s);
+			continue;
+		}
+		if (m[i] == 3)
+		{
+			change3(s);
+			continue;
+		}
+		if (m[i] == 4)
+		{
+			change4(s);
+			continue;
+		}
+		if (m[i] == 5)
+		{
+			change5(s);
+			continue;
+		}
+		if (m[i] == 6)
+		{
+			change6(s);
+			continue;
+		}
+		if (m[i] == 7)
+		{
+			change7(s);
+			continue;
+		}
+		if (m[i] == 8)
+		{
+			change8(s);
+			continue;
+		}
+		if (m[i] == 9)
+		{
+			change9(s);
+			continue;
+		}
+		else continue;
+	}
+	first_num(s);
+};
 int main()
 {
 	int shudu[9][9] = {
@@ -154,14 +241,18 @@ int main()
 		{ 5,6,4,8,9,7,2,3,1 }
 	};
 	int n;
+	int i;
 	cin >> n;
 	if (n > 1000000 || n < 0)
 	{
 		cout << "输入错误！" << endl;
 	}
 
-	print(shudu);
-
+	for (i = 0; i < n; i++)
+	{
+		shengcheng(shudu);
+		print(shudu);
+	}
 	system("pause");
 	return 0;
 }
