@@ -141,9 +141,9 @@ void change9(int s[9][9])   //随机交换两个数字的所有位置
 		}
 	}
 };
-void changex(int s[9][9])   //每个小九格中间很难换到 增加这个可以增大随机性
+void changex(int s[9][9])   //增大随机性
 {
-	int m=s[1][1];
+	int m=s[0][4];
 	int n=s[4][4];
 	int i;
 	int j;
@@ -197,11 +197,11 @@ void shengcheng(int s[9][9])   //生成一个数独
 	int m[9];
 	change9(s);               //随机交换两个数字，增大随机性
 	changex(s);				 //随机交换两个数字，增大随机性
-	for (i = 0; i < 9; i++)   //记录第一行数字
+	for (i = 0; i < 9; i++)   //记录对角线数字
 	{
-		m[i] = s[0][i];
+		m[i] = s[i][i];
 	}
-	for (i = 0;i < 9; i++)   //根据第一行数字进行变化
+	for (i = 0;i < 9; i++)   //根据对角线数字进行变化
 	{
 		if (m[i] == 1)
 		{
