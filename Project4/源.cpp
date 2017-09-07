@@ -249,8 +249,8 @@ int main()
 	}
 
 	ofstream outfile;
-	outfile.open("sudoku.txt");
-	for (i = 0; i < n; i++)
+	outfile.open("sudoku.txt"); 
+	for (i = 0; i < n; i++)          
 	{
 		
 		shengcheng(shudu);
