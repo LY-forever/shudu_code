@@ -118,10 +118,8 @@ void change9(int s[9][9])   //随机交换两个数字的所有位置
 	int i;
 	int j;
 	srand((unsigned)time(0));
-	x = rand() % 9;
-	if (x == 0) x = 1;
-	y = (x + s[3][3]) % 9;
-	if (y == 0) y = 1;
+	x = rand() % 9+1;
+	y = (x + s[3][3]) % 9+1;
 	for (i = 0; i < 9; i++)
 	{
 		for (j = 0; j < 9; j++)
