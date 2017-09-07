@@ -122,7 +122,6 @@ void change9(int s[9][9])   //随机交换两个数字的所有位置
 	if (x == 0) x = 1;
 	y = (x + s[3][3]) % 9;
 	if (y == 0) y = 1;
-
 	for (i = 0; i < 9; i++)
 	{
 		for (j = 0; j < 9; j++)
@@ -136,6 +135,31 @@ void change9(int s[9][9])   //随机交换两个数字的所有位置
 			if (s[i][j] == y)
 			{
 				s[i][j] = x;
+				continue;
+			}
+			else continue;
+		}
+	}
+};
+void changex(int s[9][9])   //每个小九格中间很难换到 增加这个可以增大随机性
+{
+	int m=s[1][1];
+	int n=s[4][4];
+	int i;
+	int j;
+	for (i = 0; i < 9; i++)
+	{
+		for (j = 0; j < 9; j++)
+		{
+			if (s[i][j] == m)
+			{
+				s[i][j] = n;
+				continue;
+			}
+
+			if (s[i][j] == n)
+			{
+				s[i][j] = m;
 				continue;
 			}
 			else continue;
@@ -172,6 +196,7 @@ void shengcheng(int s[9][9])   //生成一个数独
 	int i = 0;
 	int m[9];
 	change9(s);               //随机交换两个数字，增大随机性
+	changex(s);				 //随机交换两个数字，增大随机性
 	for (i = 0; i < 9; i++)   //记录第一行数字
 	{
 		m[i] = s[0][i];
