@@ -117,9 +117,9 @@ void change9(int s[9][9])   //随机交换两个数字的所有位置
 	int y;
 	int i;
 	int j;
-	srand((unsigned)time(0));
+	srand(unsigned(time(nullptr)) + rand());
 	x = rand() % 9+1;
-	y = (x + s[3][3]) % 9+1;
+	y = (x + s[1][3]) % 9+1;
 	for (i = 0; i < 9; i++)
 	{
 		for (j = 0; j < 9; j++)
@@ -141,7 +141,7 @@ void change9(int s[9][9])   //随机交换两个数字的所有位置
 };
 void changex(int s[9][9])   //增大随机性
 {
-	int m=s[0][4];
+	int m=s[0][2];
 	int n=s[4][4];
 	int i;
 	int j;
@@ -189,7 +189,7 @@ void first_num(int s[9][9])   //显示首个为2 学号19 （1+9）% 9 + 1 = 2
 		}
 	}
 };
-void shengcheng(int s[9][9])   //生成一个数独
+void shengcheng(int s[9][9])   //生成一个新数独
 {
 	int i = 0;
 	int m[9];
@@ -248,6 +248,7 @@ void shengcheng(int s[9][9])   //生成一个数独
 		}
 		else continue;
 	}
+	changex(s);
 	first_num(s);
 };
 int main()
